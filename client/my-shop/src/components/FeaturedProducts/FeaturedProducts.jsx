@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss";
 import useFetch from "../../hooks/useFetch";
-
 
 const FeaturedProducts = ({ type }) => {
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
   );
+
   return (
     <div className="featuredProducts">
       <div className="top">
         <h1>{type} products</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-          lacus vel facilisis labore et dolore magna aliqua. Quis ipsum
-          suspendisse ultrices gravida. Risus commodo viverra maecenas.
+        Welcome to our shopping website, where you can explore a world of trending and exciting products.
+        We pride ourselves on curating a wide selection of items that cater to diverse tastes and interests. 
+        Whether you're searching for the latest fashion trends,cutting-edge gadgets, or unique home decor, our website 
+        offers a vast array of available products to suit every need. Stay ahead of the curve by browsing our trending 
+        section,which showcases the most popular and sought-after items of the moment. With our user-friendly interface 
+        and seamless shopping experience, finding your perfect purchase has never been easier.Discover the hottest 
+        trends and explore a world of possibilities on our shopping website today.
+
         </p>
       </div>
       <div className="bottom">

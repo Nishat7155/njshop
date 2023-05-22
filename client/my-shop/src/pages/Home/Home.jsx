@@ -15,6 +15,6 @@ const Home = () => {
       < Contact />
     
     </div>
-  )
-}
-export default Home
+  );
+};
+export default Home;

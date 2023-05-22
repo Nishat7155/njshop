@@ -9,99 +9,100 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartReducer';
 
-const Product = () => {
-  const id = useParams().id;
-  const [selectedImg, setSelectedImg]= useState("img");
-  const [quantity, setQuantity]= useState(1);
 
-  const dispatch = useDispatch();
-  
+const Product = () => {
+ const id = useParams().id;
+ const [selectedImg, setSelectedImg]= useState("img");
+ const [quantity, setQuantity]= useState(1);
+
+
+ const dispatch = useDispatch();
   const { data, loading, error} = useFetch(
-    `/products/${id}?populate=*`);
-  
+   `/products/${id}?populate=*`);
   return (
-    <div className='product'>
-      {loading ? (
-        "loading"
-        ) : ( 
-        <>
-        <div className="left">
-         <div className="images">
-           <img 
-               src={process.env.REACT_APP_UPLOAD_URL +data?.attributes?.img?.data?.attributes?.url} 
-               alt="" 
-               onClick={e => setSelectedImg("img")}
-           />
-          <img 
-                src={
-                  process.env.REACT_APP_UPLOAD_URL +
-                  data?.attributes?.img2?.data?.attributes?.url
-                } 
-                alt="" 
-                onClick={e => setSelectedImg("img2")}
+   <div className='product'>
+     {loading ? (
+       "loading"
+       ) : (
+       <>
+       <div className="left">
+        <div className="images">
+          <img
+              src={process.env.REACT_APP_UPLOAD_URL +data?.attributes?.img?.data?.attributes?.url}
+              alt=""
+              onClick={e => setSelectedImg("img")}
           />
+         <img
+               src={
+                 process.env.REACT_APP_UPLOAD_URL +
+                 data?.attributes?.img2?.data?.attributes?.url
+               }
+               alt=""
+               onClick={e => setSelectedImg("img2")}
+         />
+       </div>
+       <div className="mainImg">
+         <img
+           src={
+             process.env.REACT_APP_UPLOAD_URL +
+             data?.attributes[selectedImg]?.data?.attributes?.url
+           }
+           alt=""
+         />
+       </div>
+     </div>
+     <div className="right">
+     <h1>{data?.attributes?.title}</h1>
+      <span className='price'>{data?.attributes?.price}SEK</span>
+      <p>
+        {data?.attributes?.desc}
+      </p>
+      <div className='quantity'>
+        <button
+        onClick={()=>setQuantity(prev =>prev ===1 ? 1 : prev-1)}>
+          -
+        </button>
+         {quantity}
+        <button onClick={()=>setQuantity(prev =>prev + 1)}>+</button>
+      </div>
+      <button className="add" onClick={()=>dispatch(addToCart({
+       id:data.id,
+       title:data.attributes.title,
+       desc:data.attributes.desc,
+       price:data.attributes.price,
+       img:data.attributes.img.data.attributes.url,
+       quantity,
+      }))} >
+            <AddShoppingCartIcon /> Add To Cart
+     
+      
+      </button>
+      <div className='link'>
+        <div className="item">
+             <FavoriteBorderIcon /> Add To Wish List
         </div>
-        <div className="mainImg">
-          <img 
-            src={
-              process.env.REACT_APP_UPLOAD_URL +
-              data?.attributes[selectedImg]?.data?.attributes?.url
-            } 
-            alt="" 
-          />
+        <div className="item">
+             <BalanceIcon /> Add to Compare
         </div>
       </div>
-      <div className="right">
-      <h1>{data?.attributes?.title}</h1>
-       <span className='price'>{data?.attributes?.price}SEK</span>
-       <p>
-         {data?.attributes?.desc}
-       </p>
-       <div className='quantity'>
-         <button
-         onClick={()=>setQuantity(prev =>prev ===1 ? 1 : prev-1)}>
-           -
-         </button>
-          {quantity}
-         <button onClick={()=>setQuantity(prev =>prev + 1)}>+</button>
-       </div>
-       <button className="add" onClick={()=>dispatch(addToCart({
-        id:data.id,
-        title:data.attributes.title,
-        desc:data.attributes.desc,
-        price:data.attributes.price,
-        img:data.attributes.img.data.attributes.url,
-        quantity,
-       }))} >
-             <AddShoppingCartIcon /> Add To Cart
-       
-        
-       </button>
-       <div className='link'>
-         <div className="item">
-              <FavoriteBorderIcon /> Add To Wish List
-         </div>
-         <div className="item">
-              <BalanceIcon /> Add to Compare
-         </div>
-       </div>
-       <div className="info">
-         <span>Vendor: Polo</span>
-         <span>Product Type: Sweat-shirt</span>
-         <span>Tag: t-shirt, men, top</span>
-       </div>
-       <hr />
-       <div className="info">
-         <span>DESCRIPTION</span>
-         <hr />
-         <span>ADDITIONAL INFO</span>
-         <hr/>
-         <span>FAQ</span>
-       </div>
-     </div></>)}
+      <div className="info">
+        <span>Vendor: Polo</span>
+        <span>Product Type: Sweat-shirt</span>
+        <span>Tag: t-shirt, men, top</span>
+      </div>
+      <hr />
+      <div className="info">
+        <span>DESCRIPTION</span>
+        <hr />
+        <span>ADDITIONAL INFO</span>
+        <hr/>
+        <span>FAQ</span>
+      </div>
+    </div></>)}
 
-      
-    </div>
-  )
+
+    
+   </div>
+ );
 };
-export default Product
+export default Product;
