@@ -7,4 +7,5 @@
 <img width="1752" alt="Screenshot 2023-05-23 at 13 18 43" src="https://github.com/Nishat7155/njshop/assets/57759578/e336dbc0-27d1-4560-8f1b-57d71e82c7c1">
 <img width="1776" alt="Screenshot 2023-05-23 at 13 06 03" src="https://github.com/Nishat7155/njshop/assets/57759578/304d06a5-27cc-437d-af39-53e2099f76c1">
 
+<img width="1775" alt="Screenshot 2023-05-23 at 18 57 46" src="https://github.com/Nishat7155/njshop/assets/57759578/1330914c-8eeb-413f-8c2a-fcf14af5000e">
 
