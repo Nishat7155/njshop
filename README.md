@@ -5,4 +5,4 @@
 <img width="1454" alt="Screenshot 2023-05-22 at 23 31 14" src="https://github.com/Nishat7155/njshop/assets/57759578/efe4b98b-e646-49c5-8bd7-0d1884a17cf4">
 
 
-<img width="1752" alt="Screenshot 2023-05-23 at 13 18 43" src="https://github.com/Nishat7155/njshop/assets/57759578/38707eeb-e7b7-4542-9f46-322a1fae3e8f">
+
