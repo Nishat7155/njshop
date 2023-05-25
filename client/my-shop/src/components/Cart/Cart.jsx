@@ -42,23 +42,49 @@ const Cart = () => {
      console.log(err)
    }
  }
+
+ const data=[
+  {
+    id: 1,
+    img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1020&q=80 ",
+    img2: "https://images.unsplash.com/photo-1613569973485-c6ecb241be47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80 ",
+    title: "Skirt" ,
+    desc: "Sweat shirt yellow color",
+    isNew: true,
+    oldPrice: 699, 
+    price: 250,
+
+
+  },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1677123718817-5a203404d638?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80 ",
+    img2: "https://images.unsplash.com/photo-1680263547745-4e0555920ea2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80 ",
+    title: "Jacket" ,
+    desc: "Winter jacket, outwear",
+    oldPrice: 399, 
+    price: 152,
+
+
+  },
+ ]
   return (
    <div className='cart'>Cart
      <h1>Products in your cart</h1>
-     {products?.map((item) => (
+     {data?.map((item) => (
        <div className="item" key={item.id}>
-         <img src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="" />
+         <img  src={item.img}/>
          <div className="details">
            <h1>{item.title}</h1>
            <p>{item.desc?.substring(0,100)}</p>
-           <div className="price">{item.quantity} x {item.price} SEK</div>
+           <div className="price">1 x {item.price} SEK</div>
          </div>
          <DeleteOutlineIcon  className="delete" onClick={()=>dispatch(removeItem(item.id))}/>
        </div>
      ))}
     <div className="total">
       <span>TOTAL</span>
-      <span>{totalPrice()} SEK</span>
+      <span>402 SEK</span>
     </div>
     <button onClick={handlePayment}>Go to Checkout</button>
     <span className="reset" onClick={() => dispatch(resetCart())}>
